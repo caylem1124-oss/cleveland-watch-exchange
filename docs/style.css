@@ -35,3 +35,29 @@
 .instagram-link .instagram-verified{pointer-events:none}
 .announcement .instagram-verified{width:13px;height:13px;flex-basis:13px}
 @media(max-width:600px){.product-image img,.gallery-main img{padding:12px}.thumbnails button{flex-basis:62px;width:62px;height:62px}.instagram-verified{width:14px;height:14px;flex-basis:14px}}
+/* WhatsApp contact (CLE Watches) */
+.wa-icon{width:18px;height:18px;flex-shrink:0}
+.button.whatsapp{background:#128c7e;color:#fff;gap:10px;border-color:#128c7e}
+.button.whatsapp:hover{background:#0e7569;border-color:#0e7569}
+.detail-actions .button.whatsapp .wa-icon,.contact-options .button.whatsapp .wa-icon{width:18px;height:18px}
+.inquiry-notice{display:flex;gap:10px;align-items:flex-start}
+.inquiry-notice .wa-icon{color:#128c7e;margin-top:1px}
+.inquiry-dialog #submitInquiry{width:100%}
+#inquiryStatus a{text-decoration:underline;white-space:nowrap}
+.inquiry-alternative{align-items:center;font-size:12px}
+.inquiry-alternative span{color:#626b62}
+.inquiry-alternative a{text-decoration:underline}
+.shortlist-actions .button.whatsapp{gap:8px}
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:9px;background:#25d366;color:#fff;border-radius:999px;padding:13px 18px 13px 14px;box-shadow:0 10px 30px #0b2a1b40;font-size:12px;font-weight:500;letter-spacing:.3px;transition:transform .2s,box-shadow .2s}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 14px 34px #0b2a1b55}
+.wa-float .wa-icon{width:24px;height:24px}
+.privacy-contact{margin:35px 0 30px;padding:30px 34px;background:var(--cream)}
+.privacy-contact h2{font-size:28px;margin-bottom:12px}
+.privacy-contact dl{display:grid;grid-template-columns:170px 1fr;margin:20px 0 0;font-size:13px}
+.privacy-contact dt,.privacy-contact dd{margin:0;padding:12px 0;border-top:1px solid #dcdfd2}
+.privacy-contact dt{color:#7b7d73}
+.privacy-contact a{text-decoration:underline}
+.inquiry-privacy>p{font-size:13px;line-height:1.9;color:#5f675d}
+@media(max-width:600px){.wa-float{right:14px;bottom:14px;padding:14px}.wa-float-label{display:none}.privacy-contact{padding:22px}.privacy-contact dl{grid-template-columns:1fr}.privacy-contact dd{border-top:0;padding-top:0}.inquiry-privacy h1{font-size:40px}}
+.shortlist-actions+.shortlist-actions{margin-top:10px}
+.footer-bottom span span{display:inline!important;margin:0!important}
