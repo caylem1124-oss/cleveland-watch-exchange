@@ -6,9 +6,14 @@ function showToast(msg){$('toast').textContent=msg;$('toast').classList.add('vis
 function savePersist(){try{localStorage.setItem('saint-shortlist-v2',JSON.stringify(saved))}catch{}$('basketCount').textContent=saved.length;document.querySelectorAll('[data-save]').forEach(b=>{let yes=saved.includes(b.dataset.save);b.classList.toggle('saved',yes);b.setAttribute('aria-pressed',yes);b.setAttribute('aria-label',yes?'Remove from shortlist':'Save to shortlist');if(!b.classList.contains('save-button'))b.innerHTML=heart+(yes?' Saved to shortlist':' Save to shortlist')})}
 function toggleSave(id){if(saved.includes(id)){saved=saved.filter(x=>x!==id);showToast('Removed from your shortlist')}else{saved.push(id);showToast('Added to your shortlist')}savePersist()}
 const F=CatalogCore.facets;
+// model names the catalog already uses (longest first), for listings imported without a model field
+const KNOWN_MODELS=[...new Set([...products.map(F.model).filter(Boolean),'Seamaster Diver 300M','Speedmaster Moonwatch','Black Bay Fifty-Eight','Black Bay Chrono','Santos de Cartier','Submariner Date'])].sort((a,b)=>b.length-a.length);
+const titleModel=p=>{const t=CatalogCore.norm(p.title);return KNOWN_MODELS.find(m=>t.includes(CatalogCore.norm(m)))||''};
 // "Datejust 36 mm" style name; falls back to the listing title without the condition/brand/"Watch" noise
-function shortName(p){const m=F.model(p),mm=Number(p.size);if(m)return m+(mm&&!new RegExp('\\b'+mm+'\\b').test(m)?' '+mm+' mm':'');return String(p.title||'').replace(/^\([^)]*\)\s*/,'').replace(new RegExp('^'+p.brand.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*','i'),'').replace(/\s*(men'?s|women'?s|ladies'?|unisex)?\s*watch$/i,'').trim()}
-function refShown(p){const r=String(p.reference||'');return /\d/.test(r)&&(p.referenceDocumented||String(p.title).includes(r))?r:''}
+function shortName(p){const m=F.model(p)||titleModel(p),mm=Number(p.size)||Number((/(\d{2}(?:\.\d)?)\s*mm/i.exec(p.title)||[])[1]);if(m)return m+(mm&&!new RegExp('\\b'+mm+'\\b').test(m)?' '+mm+' mm':'');return String(p.title||'').replace(/^\([^)]*\)\s*/,'').replace(new RegExp('^'+p.brand.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*','i'),'').replace(/\s*(men'?s|women'?s|ladies'?|unisex)?\s*watch$/i,'').trim()}
+// a reference-shaped token in the title: 126610LN, M79030N-0001, 210.30.42.20.03.001, WSSA0018
+const TITLE_REF=/\b(M?\d{5,6}[A-Z]{0,6}(?:-\d{4})?|\d{3}\.\d{2}\.\d{2}\.\d{2}\.\d{2}\.\d{3}|W[A-Z]{3}\d{4})\b/i;
+function refShown(p){const r=String(p.reference||'');if(!r)return (TITLE_REF.exec(p.title)||[])[1]||'';return /\d/.test(r)&&(p.referenceDocumented||String(p.title).includes(r))?r:''}
 function refLine(p){return [refShown(p)&&'Ref. '+refShown(p),p.dial&&p.dial.replace(/\s*dial$/i,'')+' dial'].filter(Boolean).join(' · ')}
 function badge(p){return p.newArrival?'New arrival':p.box==='Yes'&&p.papers==='Yes'?'Box & papers':p.papers==='Yes'?'With papers':''}
 // official manufacturer image when the listing has an exact match, else the listing's own photo (also the fallback)
