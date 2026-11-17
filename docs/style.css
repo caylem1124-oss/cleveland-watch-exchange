@@ -61,3 +61,4 @@
 @media(max-width:600px){.wa-float{right:14px;bottom:14px;padding:14px}.wa-float-label{display:none}.privacy-contact{padding:22px}.privacy-contact dl{grid-template-columns:1fr}.privacy-contact dd{border-top:0;padding-top:0}.inquiry-privacy h1{font-size:40px}}
 .shortlist-actions+.shortlist-actions{margin-top:10px}
 .footer-bottom span span{display:inline!important;margin:0!important}
+.gallery-counter:empty{display:none}
