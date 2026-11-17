@@ -101,6 +101,17 @@
 .detail-enter .product-info>*:nth-child(5){animation-delay:.2s}
 .detail-enter .product-info>*:nth-child(n+6){animation-delay:.25s}
 
+/* home hero: one crisp watch floating on a deep green spotlight */
+.hero-stage{background:radial-gradient(ellipse 70% 65% at 50% 44%,#2f5a4a 0%,#1a3a2f 42%,#0c1f18 100%)}
+.hero-stage .hero-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(204,177,130,.22),transparent 48%);pointer-events:none}
+.hero-stage .hero-plinth{position:absolute;left:33%;right:33%;bottom:21%;height:5%;border-radius:50%;background:radial-gradient(rgba(0,0,0,.6),transparent 70%);filter:blur(10px);animation:hero-shadow 7s ease-in-out 1.2s infinite}
+.hero-photo.hero-stage>img.hero-watch{inset:auto;left:50%;top:42%;width:auto;height:72%;max-width:86%;object-fit:contain;transform:translate(-50%,-50%);filter:drop-shadow(0 28px 36px rgba(0,0,0,.45));animation:hero-in 1.2s var(--ease) both,hero-float 7s ease-in-out 1.2s infinite}
+.hero-stage:after{inset:62% 0 0;background:linear-gradient(transparent,#06150fcc)}
+@keyframes hero-in{from{opacity:0;transform:translate(-50%,-44%) scale(.94)}to{opacity:1;transform:translate(-50%,-50%)}}
+@keyframes hero-float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,-52.5%)}}
+@keyframes hero-shadow{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.88);opacity:.7}}
+@media(prefers-reduced-motion:reduce){.hero-photo.hero-stage>img.hero-watch,.hero-stage .hero-plinth{animation:none}}
+
 /* the watch glides between grid and product page (Chrome, Edge, Safari 18+; other browsers just navigate) */
 @view-transition{navigation:auto}
 ::view-transition-group(watch){animation-duration:.6s;animation-timing-function:var(--ease)}
