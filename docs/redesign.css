@@ -128,6 +128,12 @@
   .product-card.in,.detail-enter .product-gallery,.detail-enter .product-info>*{animation:none}
   .stage img.cutout{transform:none!important;transition:none}
 }
-/* Grand Seiko crops its product photos tight; extra padding brings the watch to the same size as the Rolex renders */
-.stage img.cutout.render[src*="grand-seiko.com"]{padding:28%}
-.gallery-main.stage img.cutout.render[src*="grand-seiko.com"]{padding:24%}
+/* Brands crop their product photos tighter than Rolex; extra padding brings each watch to the Rolex renders' size */
+.stage img.cutout.render:is([src*="grand-seiko.com"],[src*="omegawatches.com"]){padding:28%}
+.gallery-main.stage img.cutout.render:is([src*="grand-seiko.com"],[src*="omegawatches.com"]){padding:24%}
+.stage img.cutout.render[src*="tudorwatch.com"]{padding:17%}
+.gallery-main.stage img.cutout.render[src*="tudorwatch.com"]{padding:14%}
+.stage img.cutout.render:is([src*="cartier.com"],[src*="iwc.com"],[src*="jaeger-lecoultre.com"],[src*="breitling"],[src*="swatchgroup.biz"],[src*="patek"]){padding:21%}
+.gallery-main.stage img.cutout.render:is([src*="cartier.com"],[src*="iwc.com"],[src*="jaeger-lecoultre.com"],[src*="breitling"],[src*="swatchgroup.biz"],[src*="patek"]){padding:17%}
+/* Cartier photos sit on an off-white card; lifting it to white lets multiply blend it into the stage */
+.stage img.cutout.render[src*="cartier.com"]{filter:brightness(1.09)}
