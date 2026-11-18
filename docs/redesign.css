@@ -128,3 +128,6 @@
   .product-card.in,.detail-enter .product-gallery,.detail-enter .product-info>*{animation:none}
   .stage img.cutout{transform:none!important;transition:none}
 }
+/* Grand Seiko crops its product photos tight; extra padding brings the watch to the same size as the Rolex renders */
+.stage img.cutout.render[src*="grand-seiko.com"]{padding:28%}
+.gallery-main.stage img.cutout.render[src*="grand-seiko.com"]{padding:24%}
